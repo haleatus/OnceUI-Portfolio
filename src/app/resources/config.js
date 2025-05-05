@@ -1,5 +1,4 @@
-// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://demo.once-ui.com";
+const baseURL = "https://once-ui-portfolio-sigma.vercel.app/";
 
 // Import and set font for each variant
 import { Geist } from "next/font/google";
@@ -83,13 +82,13 @@ const effects = {
 const meta = {
   home: {
     path: "/",
-    title: "Once UI for Next.js",
-    description: "An open-source design system and component library for Next.js that emphasizes easy styling and accessibility in UI development.",
-    image: "/og/home.jpg",
-    canonical: "https://once-ui.com",
+    title: "Rohit Shrestha",
+    description: "A portfolio of Rohit Shrestha (Frontend developer) made using OnceUI",
+    image: "/og/logo.svg",
+    canonical: "/",
     robots: "index,follow",
     alternates: [
-      { href: "https://once-ui.com", hrefLang: "en" },
+      { href: "/", hrefLang: "en" },
     ],
   },
   // add more routes and reference them in page.tsx
@@ -98,17 +97,18 @@ const meta = {
 // default schema data
 const schema = {
   logo: "",
-  type: "Organization",
-  name: "Once UI",
+  type: "Person",
+  name: "Rohit Shrestha",
   description: meta.home.description,
-  email: "lorant@once-ui.com",
+  email: "shrestha.rohit655@gmail.com",
 };
 
 // social links
 const social = {
-  twitter: "https://www.twitter.com/_onceui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  github: "https://github.com/haleatus",
+  linkedin: "https://www.linkedin.com/in/ro-sth/",
+  discord: "https://discord.com/invite/NTdNrUeqEJ",
+  instagram: "https://www.instagram.com/ro_.sth/",
 };
 
 export { baseURL, font, style, meta, schema, social, effects };

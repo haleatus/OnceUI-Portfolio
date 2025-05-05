@@ -55,7 +55,11 @@ export default function Home() {
   const [intro, setIntro] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [tags, setTags] = useState<string[]>(["UX / UI", "Design systems", "AI / ML"]);
+  const [tags, setTags] = useState<string[]>([
+    "UX / UI",
+    "Design systems",
+    "AI / ML",
+  ]);
   const [twoFA, setTwoFA] = useState(false);
 
   const handleSelect = (value: string) => {
@@ -103,7 +107,9 @@ export default function Home() {
 
   return (
     <Column fillWidth paddingY="80" paddingX="s" horizontal="center" flex={1}>
-      <ScrollToTop><IconButton variant="secondary" icon="chevronUp"/></ScrollToTop>
+      <ScrollToTop>
+        <IconButton variant="secondary" icon="chevronUp" />
+      </ScrollToTop>
       <Fade
         zIndex={3}
         pattern={{
@@ -127,10 +133,14 @@ export default function Home() {
           paddingLeft="32"
           paddingY="20"
         >
-          <Logo size="s" icon={false} href="https://once-ui.com" />
+          <Logo
+            size="s"
+            icon={false}
+            href="https://once-ui-portfolio-sigma.vercel.app/"
+          />
           <Row gap="12" hide="s">
             <Button
-              href="https://discord.com/invite/5EyAQ4eNdS"
+              href="https://discord.com/invite/NTdNrUeqEJ"
               prefixIcon="discord"
               size="s"
               label="Discord"
@@ -138,7 +148,7 @@ export default function Home() {
               variant="tertiary"
             />
             <Button
-              href="https://github.com/once-ui-system"
+              href="https://github.com/haleatus"
               prefixIcon="github"
               size="s"
               label="GitHub"
@@ -244,14 +254,25 @@ export default function Home() {
               colorEnd: "static-transparent",
             }}
           />
-          <Column fillWidth horizontal="center" gap="32" padding="32" position="relative">
+          <Column
+            fillWidth
+            horizontal="center"
+            gap="32"
+            padding="32"
+            position="relative"
+          >
             <InlineCode radius="xl" shadow="m" fit paddingX="16" paddingY="8">
               Start by editing
               <Text onBackground="brand-medium" marginLeft="8">
                 app/page.tsx
               </Text>
             </InlineCode>
-            <Heading wrap="balance" variant="display-strong-xl" align="center" marginBottom="16">
+            <Heading
+              wrap="balance"
+              variant="display-strong-xl"
+              align="center"
+              marginBottom="16"
+            >
               Code faster than AI
             </Heading>
             <Button
@@ -263,7 +284,11 @@ export default function Home() {
               arrowIcon
             />
             <Column horizontal="center" paddingTop="64" fillWidth gap="24">
-              <Line maxWidth={4} marginBottom="16" background="neutral-alpha-medium" />
+              <Line
+                maxWidth={4}
+                marginBottom="16"
+                background="neutral-alpha-medium"
+              />
               <AvatarGroup
                 marginBottom="8"
                 reverse
@@ -277,7 +302,12 @@ export default function Home() {
                   },
                 ]}
               />
-              <Heading marginBottom="12" as="h2" align="center" variant="heading-default-l">
+              <Heading
+                marginBottom="12"
+                as="h2"
+                align="center"
+                variant="heading-default-l"
+              >
                 Brought to you by indie creators
                 <br /> behind stellar projects:
               </Heading>
@@ -316,7 +346,13 @@ export default function Home() {
               />
             </Column>
           </Column>
-          <Column fillWidth paddingX="32" gap="12" horizontal="center" position="relative">
+          <Column
+            fillWidth
+            paddingX="32"
+            gap="12"
+            horizontal="center"
+            position="relative"
+          >
             <Heading as="h2" variant="display-default-m">
               Showcase
             </Heading>
@@ -343,9 +379,19 @@ export default function Home() {
               overflow="hidden"
             >
               <Row fill hide="m">
-                <SmartImage src="/images/login.png" alt="Preview image" sizes="560px" />
+                <SmartImage
+                  src="/images/login.png"
+                  alt="Preview image"
+                  sizes="560px"
+                />
               </Row>
-              <Column fillWidth horizontal="center" gap="20" padding="32" position="relative">
+              <Column
+                fillWidth
+                horizontal="center"
+                gap="20"
+                padding="32"
+                position="relative"
+              >
                 <Background
                   mask={{
                     x: 100,
@@ -388,7 +434,12 @@ export default function Home() {
                   />
                 </Column>
                 <Row fillWidth paddingY="24">
-                  <Row onBackground="neutral-weak" fillWidth gap="24" vertical="center">
+                  <Row
+                    onBackground="neutral-weak"
+                    fillWidth
+                    gap="24"
+                    vertical="center"
+                  >
                     <Line />/<Line />
                   </Row>
                 </Row>
@@ -498,10 +549,17 @@ export default function Home() {
                     onSolid="neutral-strong"
                   >
                     <Text variant="body-default-xl">Lorant One</Text>
-                    <Row fillWidth horizontal="space-between" vertical="end" paddingRight="16">
+                    <Row
+                      fillWidth
+                      horizontal="space-between"
+                      vertical="end"
+                      paddingRight="16"
+                    >
                       <Column gap="4">
                         <Text variant="body-default-m">08 / 27</Text>
-                        <Text variant="body-default-m">1234 5678 1234 5678</Text>
+                        <Text variant="body-default-m">
+                          1234 5678 1234 5678
+                        </Text>
                       </Column>
                       <Icon name="visa" size="xl" />
                     </Row>
@@ -511,7 +569,12 @@ export default function Home() {
             </TiltFx>
           </Row>
           <Column position="relative" fillWidth gap="-1">
-            <Row fillWidth vertical="center" horizontal="space-between" marginBottom="32">
+            <Row
+              fillWidth
+              vertical="center"
+              horizontal="space-between"
+              marginBottom="32"
+            >
               <Heading as="h3" variant="display-default-xs">
                 Fill in your card details
               </Heading>
@@ -646,7 +709,14 @@ export default function Home() {
         </Row>
 
         {/* PROFILE */}
-        <Row horizontal="center" paddingX="32" paddingY="64" fillWidth gap="32" position="relative">
+        <Row
+          horizontal="center"
+          paddingX="32"
+          paddingY="64"
+          fillWidth
+          gap="32"
+          position="relative"
+        >
           <Background
             mask={{
               cursor: true,
@@ -694,7 +764,9 @@ export default function Home() {
             >
               <MediaUpload
                 border={undefined}
-                emptyState={<Row paddingBottom="80">Drag and drop or click to browse</Row>}
+                emptyState={
+                  <Row paddingBottom="80">Drag and drop or click to browse</Row>
+                }
                 position="absolute"
                 aspectRatio="16 / 9"
                 sizes="560px"
@@ -721,11 +793,17 @@ export default function Home() {
                 <Heading marginTop="24" as="h3" variant="display-default-m">
                   Lorant One
                 </Heading>
-                <Text align="center" onBackground="neutral-weak" marginBottom="24">
+                <Text
+                  align="center"
+                  onBackground="neutral-weak"
+                  marginBottom="24"
+                >
                   165 connections
                 </Text>
                 <SegmentedControl
-                  onToggle={(value) => console.log("SegmentedControl changed", value)}
+                  onToggle={(value) =>
+                    console.log("SegmentedControl changed", value)
+                  }
                   buttons={[
                     {
                       size: "l",
@@ -940,12 +1018,20 @@ export default function Home() {
               height: "0.25rem",
             }}
           />
-          <Row position="relative" textVariant="display-default-m" align="center">
+          <Row
+            position="relative"
+            textVariant="display-default-m"
+            align="center"
+          >
             Learn more
           </Row>
         </Row>
         <Row fillWidth overflow="hidden">
-          <Row maxWidth="32" borderTop="neutral-alpha-weak" borderBottom="neutral-medium" />
+          <Row
+            maxWidth="32"
+            borderTop="neutral-alpha-weak"
+            borderBottom="neutral-medium"
+          />
           <Row fillWidth border="neutral-alpha-weak" mobileDirection="column">
             {links.map((link, index) => (
               <Card
@@ -956,7 +1042,9 @@ export default function Home() {
                 gap="8"
                 background="page"
                 direction="column"
-                borderRight={index < links.length - 1 ? "neutral-alpha-weak" : undefined}
+                borderRight={
+                  index < links.length - 1 ? "neutral-alpha-weak" : undefined
+                }
                 border={undefined}
               >
                 <Row fillWidth center gap="12">
@@ -965,13 +1053,21 @@ export default function Home() {
                   </Text>
                   <Icon size="s" name="arrowUpRight" />
                 </Row>
-                <Text align="center" variant="body-default-s" onBackground="neutral-weak">
+                <Text
+                  align="center"
+                  variant="body-default-s"
+                  onBackground="neutral-weak"
+                >
                   {link.description}
                 </Text>
               </Card>
             ))}
           </Row>
-          <Row maxWidth="32" borderTop="neutral-alpha-weak" borderBottom="neutral-medium" />
+          <Row
+            maxWidth="32"
+            borderTop="neutral-alpha-weak"
+            borderBottom="neutral-medium"
+          />
         </Row>
         <Row
           position="relative"
@@ -1011,7 +1107,7 @@ export default function Home() {
             <SmartLink href="https://github.com/once-ui-system/nextjs-starter?tab=MIT-1-ov-file">
               MIT License
             </SmartLink>
-            <ThemeSwitcher marginTop="24"/>
+            <ThemeSwitcher marginTop="24" />
           </Column>
         </Row>
       </Column>
@@ -1024,7 +1120,10 @@ export default function Home() {
         base={isSecondDialogOpen}
         onHeightChange={(height) => setFirstDialogHeight(height)}
         footer={
-          <Button variant="secondary" onClick={() => setIsFirstDialogOpen(false)}>
+          <Button
+            variant="secondary"
+            onClick={() => setIsFirstDialogOpen(false)}
+          >
             Close
           </Button>
         }
@@ -1037,7 +1136,9 @@ export default function Home() {
             label="2FA"
             description="Enable two factor authentication"
           />
-          <Button onClick={() => setIsSecondDialogOpen(true)}>Change password</Button>
+          <Button onClick={() => setIsSecondDialogOpen(true)}>
+            Change password
+          </Button>
         </Column>
       </Dialog>
       <Dialog
@@ -1049,7 +1150,10 @@ export default function Home() {
         minHeight={firstDialogHeight}
         footer={
           <>
-            <Button variant="secondary" onClick={() => setIsSecondDialogOpen(false)}>
+            <Button
+              variant="secondary"
+              onClick={() => setIsSecondDialogOpen(false)}
+            >
               Close
             </Button>
             <Button onClick={() => setIsSecondDialogOpen(false)}>Save</Button>
