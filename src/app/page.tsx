@@ -82,6 +82,63 @@ export default function Home() {
     },
   ];
 
+  // Skills data organized by category
+  const skills = [
+    {
+      category: "Frontend Development",
+      items: [
+        "TypeScript",
+        "Next.js",
+        "React.js",
+        "TailwindCSS",
+        "JavaScript",
+        "Three.js",
+        "GSAP",
+        "Flutter",
+      ],
+    },
+    {
+      category: "Backend & Database",
+      items: ["DrizzleORM", "tRPC", "Prisma", "Tanstack Query"],
+    },
+    {
+      category: "UI/UX & Design",
+      items: [
+        "Figma",
+        "Shadcn",
+        "AceternityUI",
+        "Framer Motion",
+        "MaterialUI",
+        "Recharts",
+      ],
+    },
+    {
+      category: "Mapping & Geospatial",
+      items: [
+        "Cesium",
+        "Leaflet",
+        "Mapbox",
+        "OSM",
+        "GeoJSON",
+        "GPX",
+        "GoogleMaps",
+      ],
+    },
+    {
+      category: "Dev Tools & Methodologies",
+      items: [
+        "Git",
+        "GitHub",
+        "Postman",
+        "VS Code",
+        "Notion",
+        "Agile",
+        "Scrum",
+        "Docker",
+      ],
+    },
+  ];
+
   // Projects data
   const projects = [
     {
@@ -214,6 +271,7 @@ export default function Home() {
               variant="tertiary"
             />
             <Row position="fixed" top="20" right="20">
+              <ThemeSwitcher marginRight="12" />
               <StyleOverlay
                 position="fixed"
                 top="8"
@@ -427,6 +485,70 @@ export default function Home() {
                 </Row>
               </Column>
             </Row>
+          </Column>
+
+          {/* SKILLS SECTION */}
+          <Column
+            id="skills"
+            fillWidth
+            paddingX="32"
+            gap="12"
+            horizontal="center"
+            position="relative"
+            paddingY="64"
+            marginTop="32"
+          >
+            <Background
+              mask={{
+                x: 0,
+                y: 100,
+              }}
+              position="absolute"
+              grid={{
+                display: true,
+                width: "0.25rem",
+                color: "accent-alpha-strong",
+                height: "0.25rem",
+              }}
+            />
+            <Heading as="h2" variant="display-default-m">
+              Skills & Expertise
+            </Heading>
+            <Text marginBottom="32" align="center" onBackground="neutral-weak">
+              A comprehensive toolkit of technologies I work with
+            </Text>
+
+            <Column gap="24" fillWidth>
+              {skills.map((skillGroup, index) => (
+                <Column
+                  key={index}
+                  background="overlay"
+                  fillWidth
+                  radius="xl"
+                  border="neutral-alpha-weak"
+                  padding="24"
+                  gap="12"
+                >
+                  <Heading as="h3" variant="display-default-xs">
+                    {skillGroup.category}
+                  </Heading>
+                  <Row gap="8" wrap fillWidth>
+                    {skillGroup.items.map((skill, skillIndex) => (
+                      <InlineCode
+                        key={skillIndex}
+                        radius="m"
+                        fit
+                        paddingX="12"
+                        paddingY="8"
+                        margin="4"
+                      >
+                        <Text variant="body-default-s">{skill}</Text>
+                      </InlineCode>
+                    ))}
+                  </Row>
+                </Column>
+              ))}
+            </Column>
           </Column>
 
           {/* PROJECTS SECTION */}
@@ -679,7 +801,6 @@ export default function Home() {
             gap="16"
           >
             <Text size="m">© {new Date().getFullYear()} / Rohit Shrestha</Text>
-            <ThemeSwitcher marginTop="24" />
           </Column>
         </Row>
       </Column>
