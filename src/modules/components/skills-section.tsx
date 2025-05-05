@@ -1,10 +1,19 @@
 "use client";
 
-import { Background, Column, Heading, Row, Text } from "@/once-ui/components";
+import { useState, type FC } from "react";
+import { Card, Column, Heading, Row } from "@/once-ui/components";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+
+// Define the skill type
+interface Skill {
+  name: string;
+  icon: string;
+  url: string;
+}
 
 // -- Skills Data --
-const allSkills = [
+const allSkills: Skill[] = [
   // Frontend Development
   {
     name: "TypeScript",
@@ -105,15 +114,95 @@ const allSkills = [
   },
 ];
 
-// -- Component --
-export const SkillsSection = () => {
+// Skill logo component with hover effect
+const SkillLogo: FC<{ skill: Skill }> = ({ skill }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  return (
+    <div style={{ position: "relative", display: "inline-block" }}>
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        onClick={() => window.open(skill.url, "_blank", "noopener noreferrer")}
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+        style={{ cursor: "pointer" }}
+        className="rounded-2xl"
+      >
+        <Card
+          noHoverBackground
+          style={{
+            width: "60px",
+            height: "60px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "rgba(255, 255, 255, 0.03)",
+            backdropFilter: "blur(5px)",
+            border: "1px solid rgba(255, 255, 255, 0.05)",
+            borderRadius: "20px",
+            padding: "0",
+            transition: "all 0.3s ease",
+          }}
+        >
+          <Image
+            src={skill.icon || "/placeholder.svg"}
+            alt={skill.name}
+            width={30}
+            height={30}
+            style={{ opacity: 0.9 }}
+          />
+        </Card>
+      </motion.div>
+
+      {/* Tooltip positioned absolutely relative to its parent */}
+      <AnimatePresence>
+        {showTooltip && (
+          <motion.div
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{
+              position: "absolute",
+              bottom: "100%", // Position above the icon
+              left: "50%",
+              transform: "translateX(-50%)",
+              marginBottom: "8px", // Space between tooltip and icon
+              zIndex: 1000,
+              whiteSpace: "nowrap",
+              pointerEvents: "none", // Prevents tooltip from interfering with hover
+            }}
+          >
+            <div
+              style={{
+                background: "rgba(0, 0, 0, 0.75)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                borderRadius: "4px",
+                padding: "4px 8px",
+                color: "white",
+                fontSize: "12px",
+                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+              }}
+            >
+              {skill.name}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export const SkillsSection: FC = () => {
   return (
     <Column
       id="skills"
       fillWidth
       paddingX="24"
-      paddingY="16"
-      gap="4"
+      paddingY="24"
+      gap="8"
       horizontal="center"
       position="relative"
     >
@@ -122,45 +211,30 @@ export const SkillsSection = () => {
         Skills & Expertise
       </Heading>
 
-      {/* Skills Card Container */}
-      <Column
-        background="overlay"
-        radius="m"
-        border="neutral-alpha-weak"
-        padding="16"
-        maxWidth={800}
+      {/* Skills Grid */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
       >
-        <Row gap="4" wrap fillWidth horizontal="center">
-          {allSkills.map((skill) => (
-            <Column
-              key={skill.name}
-              horizontal="center"
-              gap="2"
-              padding="4"
-              radius="m"
-              width="16"
-              style={{ cursor: "pointer" }}
-              background="neutral-alpha-weak"
-              onClick={() =>
-                window.open(skill.url, "_blank", "noopener noreferrer")
-              }
-            >
-              <Image src={skill.icon} alt={skill.name} width={30} height={30} />
-              <Text
-                variant="body-default-xs"
-                align="center"
-                style={{
-                  fontSize: "0.6rem",
-                  textTransform: "uppercase",
-                  wordBreak: "break-word",
-                }}
-              >
-                {skill.name}
-              </Text>
-            </Column>
-          ))}
-        </Row>
-      </Column>
+        <Column
+          background="overlay"
+          radius="l"
+          border="neutral-alpha-weak"
+          padding="24"
+          maxWidth={900}
+          style={{
+            backdropFilter: "blur(10px)",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+          }}
+        >
+          <Row gap="8" wrap fillWidth horizontal="center">
+            {allSkills.map((skill) => (
+              <SkillLogo key={skill.name} skill={skill} />
+            ))}
+          </Row>
+        </Column>
+      </motion.div>
     </Column>
   );
 };
