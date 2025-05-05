@@ -1,8 +1,9 @@
 "use client";
 
-import type React from "react";
 import { useState } from "react";
 
+import { ContactSection } from "@/modules/components/contacts-section";
+import { SkillsSection } from "@/modules/components/skills-section";
 import {
   Background,
   Button,
@@ -22,8 +23,6 @@ import {
   type DateRange,
 } from "@/once-ui/components";
 import { ScrollToTop } from "@/once-ui/components/ScrollToTop";
-import { SkillsSection } from "@/modules/components/skills-section";
-import { ContactSection } from "@/modules/components/contacts-section";
 
 export default function Home() {
   const [selectedValue, setSelectedValue] = useState("");
@@ -177,26 +176,6 @@ export default function Home() {
       image: "/images/hr-portal/HR-Portal-light.png",
     },
   ];
-
-  const validateIntro = (value: React.ReactNode) => {
-    if (typeof value === "string" && value.length < 10) {
-      return (
-        <Row horizontal="center" marginBottom="12" gap="8">
-          <Icon name="errorCircle" />
-          Intro must be at least 10 characters long.
-        </Row>
-      );
-    }
-    return null;
-  };
-
-  const validateLogin = () => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!regex.test(email)) {
-      return "Email and / or password is invalid.";
-    }
-    return null;
-  };
 
   return (
     <Column fillWidth paddingY="80" paddingX="s" horizontal="center" flex={1}>
@@ -484,19 +463,6 @@ export default function Home() {
             paddingY="64"
             marginTop="32"
           >
-            <Background
-              mask={{
-                x: 0,
-                y: 100,
-              }}
-              position="absolute"
-              grid={{
-                display: true,
-                width: "0.25rem",
-                color: "brand-alpha-strong",
-                height: "0.25rem",
-              }}
-            />
             <Heading as="h2" variant="display-default-m">
               My Projects
             </Heading>
@@ -579,10 +545,10 @@ export default function Home() {
               ))}
             </Column>
           </Column>
-        </Column>
 
-        {/* CONTACT SECTION */}
-        <ContactSection />
+          {/* CONTACT SECTION */}
+          <ContactSection />
+        </Column>
 
         {/* FOOTER */}
         <Row
