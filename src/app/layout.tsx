@@ -4,7 +4,13 @@ import "@/once-ui/tokens/index.scss";
 import classNames from "classnames";
 
 import { baseURL, style, meta, font, effects } from "@/app/resources/config";
-import { Background, Column, Flex, ToastProvider, ThemeProvider } from "@/once-ui/components";
+import {
+  Background,
+  Column,
+  Flex,
+  ToastProvider,
+  ThemeProvider,
+} from "@/once-ui/components";
 
 import { opacity, SpacingToken } from "@/once-ui/types";
 import { Meta, Schema } from "@/once-ui/modules";
@@ -47,7 +53,7 @@ export default function RootLayout({
         font.primary.variable,
         font.secondary.variable,
         font.tertiary.variable,
-        font.code.variable,
+        font.code.variable
       )}
     >
       <Schema
@@ -89,7 +95,7 @@ export default function RootLayout({
                 x: effects.mask.x,
                 y: effects.mask.y,
                 radius: effects.mask.radius,
-                cursor: effects.mask.cursor
+                cursor: effects.mask.cursor,
               }}
               gradient={{
                 display: effects.gradient.display,

@@ -39,7 +39,7 @@ const ThemeSwitcher = forwardRef<HTMLDivElement, ThemeSwitchProps>(
         />
       </Row>
     );
-  },
+  }
 );
 
 ThemeSwitcher.displayName = "ThemeSwitcher";

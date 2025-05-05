@@ -3,3 +3,9 @@
         background-color: var(--neutral-alpha-medium);
     }
 }
+
+.noHoverBackground {
+    &:hover {
+        background-color: inherit !important; // override hover bg change
+    }
+}

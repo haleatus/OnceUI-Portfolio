@@ -33,9 +33,18 @@ import {
 
 import { RiVisaLine } from "react-icons/ri";
 
-import { FaDiscord, FaGithub, FaGoogle } from "react-icons/fa6";
+import {
+  FaDiscord,
+  FaGithub,
+  FaGoogle,
+  FaLinkedin,
+  FaMapLocation,
+  FaPhone,
+} from "react-icons/fa6";
 
 import { LuChevronsLeftRight } from "react-icons/lu";
+import { FaMailchimp } from "react-icons/fa";
+import { PiReadCvLogo } from "react-icons/pi";
 
 export const iconLibrary: Record<string, IconType> = {
   chevronUp: HiChevronUp,
@@ -60,6 +69,11 @@ export const iconLibrary: Record<string, IconType> = {
   discord: FaDiscord,
   google: FaGoogle,
   github: FaGithub,
+  resume: PiReadCvLogo,
+  linkedin: FaLinkedin,
+  mail: FaMailchimp,
+  phone: FaPhone,
+  mapPin: FaMapLocation,
   arrowUpRight: HiArrowUpRight,
   minus: HiMiniMinus,
   plus: HiMiniPlus,
@@ -70,7 +84,7 @@ export const iconLibrary: Record<string, IconType> = {
   visa: RiVisaLine,
   security: HiOutlineShieldCheck,
   sparkle: HiOutlineSparkles,
-  computer: HiOutlineComputerDesktop
+  computer: HiOutlineComputerDesktop,
 };
 
 export type IconLibrary = typeof iconLibrary;

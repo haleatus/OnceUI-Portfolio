@@ -16,6 +16,7 @@ export interface SmartImageProps extends React.ComponentProps<typeof Flex> {
   unoptimized?: boolean;
   sizes?: string;
   priority?: boolean;
+  quality?: number;
 }
 
 const SmartImage: React.FC<SmartImageProps> = ({
@@ -26,9 +27,10 @@ const SmartImage: React.FC<SmartImageProps> = ({
   objectFit = "cover",
   enlarge = false,
   src,
-  unoptimized = false,
-  priority,
-  sizes = "100vw",
+  unoptimized = true, // Set default to true to prevent automatic optimization that might reduce quality
+  priority = true, // Set priority to true by default for faster loading of visible images
+  sizes = "100vw", // Keep the responsive sizing
+  quality = 100, // Add high quality default
   ...rest
 }) => {
   const [isEnlarged, setIsEnlarged] = useState(false);
@@ -102,7 +104,7 @@ const SmartImage: React.FC<SmartImageProps> = ({
 
   const getYouTubeEmbedUrl = (url: string) => {
     const match = url.match(
-      /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+      /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
     );
     return match
       ? `https://www.youtube.com/embed/${match[1]}?controls=0&rel=0&modestbranding=1`
@@ -111,6 +113,9 @@ const SmartImage: React.FC<SmartImageProps> = ({
 
   const isVideo = src?.endsWith(".mp4");
   const isYouTube = isYouTubeVideo(src);
+
+  // Better responsive sizes configuration based on typical breakpoints
+  const responsiveSizes = "100vw";
 
   return (
     <>
@@ -164,8 +169,9 @@ const SmartImage: React.FC<SmartImageProps> = ({
             src={src}
             alt={alt}
             priority={priority}
-            sizes={sizes}
+            sizes={responsiveSizes}
             unoptimized={unoptimized}
+            quality={quality}
             fill
             style={{
               objectFit: objectFit,
@@ -199,7 +205,9 @@ const SmartImage: React.FC<SmartImageProps> = ({
               height: "100vh",
               transform: "translate(-50%, -50%)",
             }}
-            onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+            onClick={(e: React.MouseEvent<HTMLDivElement>) =>
+              e.stopPropagation()
+            }
           >
             {isVideo ? (
               <video
@@ -220,6 +228,7 @@ const SmartImage: React.FC<SmartImageProps> = ({
                 alt={alt}
                 fill
                 sizes="90vw"
+                quality={100}
                 unoptimized={unoptimized}
                 style={{
                   objectFit: "contain",

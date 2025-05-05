@@ -1,12 +1,19 @@
 .type {
-	content: var(--type);
+    /* Remove this line or update it */
+    /* content: var(--type); */
+    font-weight: 600;
+    /* Ensure the actual text content is displayed */
+    content: none;
 }
 
 .icon {
-	content: var(--icon);
+    /* Remove this line or update it */
+    /* content: var(--icon); */
+    content: none;
 }
 
-.type, .icon {
+.type,
+.icon {
     user-select: none;
     display: block;
 }
