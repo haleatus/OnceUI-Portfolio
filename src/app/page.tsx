@@ -109,7 +109,7 @@ export default function Home() {
           paddingY="20"
         >
           <Logo
-            size="s"
+            size="m"
             iconSrc="/images/og/logo-transparent.svg"
             wordmarkText="Rohit Shrestha"
             href="https://once-ui-portfolio-sigma.vercel.app/"
