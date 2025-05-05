@@ -343,7 +343,7 @@ export default function Home() {
               id="downloadCV"
               target="_blank"
               label="Download CV"
-              href="/Rohit_Shrestha_CV.pdf" // Update with your CV path
+              href="cv/Rohit_Shrestha_CV.pdf"
               variant="secondary"
               arrowIcon
             />
@@ -377,9 +377,11 @@ export default function Home() {
             >
               <Row fill hide="m">
                 <SmartImage
-                  src="/images/profile.jpg"
+                  src="/images/my-image.png"
                   alt="Rohit Shrestha"
                   sizes="560px"
+                  quality={100}
+                  objectFit="cover"
                 />
               </Row>
               <Column fillWidth gap="20" padding="32" position="relative">
@@ -476,6 +478,10 @@ export default function Home() {
                       src={project.image || "/images/placeholder.jpg"}
                       alt={project.title}
                       sizes="560px"
+                      unoptimized={true}
+                      priority={index < 2} // Prioritize loading first two images
+                      quality={100}
+                      objectFit="cover"
                     />
                   </Row>
                   <Column fillWidth gap="16" padding="32" position="relative">
@@ -571,7 +577,7 @@ export default function Home() {
             marginY="32"
             background="overlay"
             fillWidth
-            maxWidth="32"
+            maxWidth="l"
             radius="xl"
             border="neutral-alpha-weak"
             overflow="hidden"
@@ -583,29 +589,47 @@ export default function Home() {
               position="relative"
               horizontal="center"
             >
-              <Row gap="12" vertical="center" marginBottom="8">
+              <Row
+                gap="12"
+                vertical="center"
+                marginBottom="16"
+                wrap={true}
+                horizontal="center"
+              >
                 <Icon name="mail" size="m" onBackground="brand-medium" />
                 <Text variant="body-strong-m">shrestha.rohit655@gmail.com</Text>
               </Row>
-              <Row gap="12" vertical="center" marginBottom="8">
+              <Row
+                gap="12"
+                vertical="center"
+                marginBottom="16"
+                wrap={true}
+                horizontal="center"
+              >
                 <Icon name="phone" size="m" onBackground="brand-medium" />
                 <Text variant="body-strong-m">+977 9840883711</Text>
               </Row>
-              <Row gap="12" vertical="center" marginBottom="24">
+              <Row
+                gap="12"
+                vertical="center"
+                marginBottom="24"
+                wrap={true}
+                horizontal="center"
+              >
                 <Icon name="mapPin" size="m" onBackground="brand-medium" />
                 <Text variant="body-strong-m">Kathmandu, Nepal</Text>
               </Row>
 
               <Row gap="16" horizontal="center" marginTop="16">
                 <IconButton
-                  href="https://github.com/RohitSth"
+                  href="https://github.com/haleatus"
                   icon="github"
                   variant="secondary"
                   target="_blank"
                   tooltip="GitHub"
                 />
                 <IconButton
-                  href="https://www.linkedin.com/in/rohit-shrestha/"
+                  href="https://www.linkedin.com/in/ro-sth/"
                   icon="linkedin"
                   variant="secondary"
                   target="_blank"
