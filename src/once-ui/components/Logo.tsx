@@ -23,6 +23,7 @@ interface LogoProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   icon?: boolean;
   iconSrc?: string;
   wordmarkSrc?: string;
+  wordmarkText?: string;
   href?: string;
 }
 
@@ -33,6 +34,7 @@ const Logo: React.FC<LogoProps> = ({
   href,
   iconSrc,
   wordmarkSrc,
+  wordmarkText = "Rohit Shrestha", // Set default text to "Rohit Shrestha"
   className,
   style,
   ...props
@@ -56,13 +58,12 @@ const Logo: React.FC<LogoProps> = ({
         />
       )}
       {iconSrc && (
-        // @ts-ignore
         <img
           style={{
             height: `var(--static-space-${sizeMap[size]})`,
             width: "auto",
           }}
-          alt="Trademark"
+          alt="Rohit Shrestha Logo" // Updated alt text
           src={iconSrc}
         />
       )}
@@ -70,18 +71,24 @@ const Logo: React.FC<LogoProps> = ({
         <div
           style={{
             height: `var(--static-space-${sizeMap[size]})`,
+            display: "flex",
+            alignItems: "center",
+            fontSize: `calc(var(--static-space-${sizeMap[size]}) * 0.5)`,
+            marginLeft: "0.5rem",
           }}
           className={styles.type}
-        />
+        >
+          {wordmarkText || "Rohit Shrestha"} {/* Updated default text */}
+        </div>
       )}
+
       {wordmarkSrc && (
-        // @ts-ignore
         <img
           style={{
             height: `var(--static-space-${sizeMap[size]})`,
             width: "auto",
           }}
-          alt="Trademark"
+          alt="Rohit Shrestha" // Updated alt text
           src={wordmarkSrc}
         />
       )}
@@ -98,7 +105,7 @@ const Logo: React.FC<LogoProps> = ({
       )}
       style={style}
       href={href}
-      aria-label="Trademark"
+      aria-label="Rohit Shrestha" // Updated aria-label
       {...props}
     >
       {content}
@@ -109,12 +116,12 @@ const Logo: React.FC<LogoProps> = ({
       radius="l"
       fitHeight
       style={style}
-      aria-label="Trademark"
+      aria-label="Rohit Shrestha" // Updated aria-label
     >
       {content}
     </Flex>
   );
 };
 
-Logo.displayName = "Rohit Shrestha";
+Logo.displayName = "Rohit Shrestha"; // Updated displayName
 export { Logo };

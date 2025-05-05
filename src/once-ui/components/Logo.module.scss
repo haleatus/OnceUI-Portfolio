@@ -1,12 +1,14 @@
 .type {
-	content: var(--type);
+    content: var(--type);
+    font-weight: 600;
 }
 
 .icon {
-	content: var(--icon);
+    content: var(--icon);
 }
 
-.type, .icon {
+.type,
+.icon {
     user-select: none;
     display: block;
 }

@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-
 import { AboutMeSection } from "@/modules/components/about-me-section";
 import { ContactSection } from "@/modules/components/contacts-section";
+import { EducationSection } from "@/modules/components/education-section";
+import { ExperienceSection } from "@/modules/components/experience-section";
 import { SkillsSection } from "@/modules/components/skills-section";
 import {
   Background,
@@ -20,110 +20,10 @@ import {
   StyleOverlay,
   Text,
   ThemeSwitcher,
-  useToast,
-  type DateRange,
 } from "@/once-ui/components";
 import { ScrollToTop } from "@/once-ui/components/ScrollToTop";
-import { ExperienceSection } from "@/modules/components/experience-section";
-import { EducationSection } from "@/modules/components/education-section";
 
 export default function Home() {
-  const [selectedValue, setSelectedValue] = useState("");
-  const [selectedRange, setSelectedRange] = useState<DateRange>();
-  const [isFirstDialogOpen, setIsFirstDialogOpen] = useState(false);
-  const [isSecondDialogOpen, setIsSecondDialogOpen] = useState(false);
-  const [firstDialogHeight, setFirstDialogHeight] = useState<number>();
-  const { addToast } = useToast();
-  const [intro, setIntro] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [tags, setTags] = useState<string[]>([
-    "UX / UI",
-    "Design systems",
-    "AI / ML",
-  ]);
-  const [twoFA, setTwoFA] = useState(false);
-
-  const handleSelect = (value: string) => {
-    console.log("Selected option:", value);
-    setSelectedValue(value);
-  };
-
-  const links = [
-    {
-      href: "https://once-ui.com/docs/theming",
-      title: "Themes",
-      description: "Style your app in minutes",
-    },
-    {
-      href: "https://once-ui.com/docs/flexComponent",
-      title: "Layout",
-      description: "Build responsive layouts",
-    },
-    {
-      href: "https://once-ui.com/docs/typography",
-      title: "Typography",
-      description: "Scale text automatically",
-    },
-  ];
-
-  // Skills data organized by category
-  const skills = [
-    {
-      category: "Frontend Development",
-      items: [
-        "TypeScript",
-        "Next.js",
-        "React.js",
-        "TailwindCSS",
-        "JavaScript",
-        "Three.js",
-        "GSAP",
-        "Flutter",
-      ],
-    },
-    {
-      category: "Backend & Database",
-      items: ["DrizzleORM", "tRPC", "Prisma", "Tanstack Query"],
-    },
-    {
-      category: "UI/UX & Design",
-      items: [
-        "Figma",
-        "Shadcn",
-        "AceternityUI",
-        "Framer Motion",
-        "MaterialUI",
-        "Recharts",
-      ],
-    },
-    {
-      category: "Mapping & Geospatial",
-      items: [
-        "Cesium",
-        "Leaflet",
-        "Mapbox",
-        "OSM",
-        "GeoJSON",
-        "GPX",
-        "GoogleMaps",
-      ],
-    },
-    {
-      category: "Dev Tools & Methodologies",
-      items: [
-        "Git",
-        "GitHub",
-        "Postman",
-        "VS Code",
-        "Notion",
-        "Agile",
-        "Scrum",
-        "Docker",
-      ],
-    },
-  ];
-
   // Projects data
   const projects = [
     {
@@ -210,9 +110,11 @@ export default function Home() {
         >
           <Logo
             size="s"
-            icon={false}
+            iconSrc="/images/og/logo-transparent.svg"
+            wordmarkText="Rohit Shrestha"
             href="https://once-ui-portfolio-sigma.vercel.app/"
           />
+
           <Row gap="12" hide="s">
             <Button
               href="#about"
