@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { AboutMeSection } from "@/modules/components/about-me-section";
 import { ContactSection } from "@/modules/components/contacts-section";
 import { SkillsSection } from "@/modules/components/skills-section";
 import {
@@ -23,6 +24,8 @@ import {
   type DateRange,
 } from "@/once-ui/components";
 import { ScrollToTop } from "@/once-ui/components/ScrollToTop";
+import { ExperienceSection } from "@/modules/components/experience-section";
+import { EducationSection } from "@/modules/components/education-section";
 
 export default function Home() {
   const [selectedValue, setSelectedValue] = useState("");
@@ -359,14 +362,6 @@ export default function Home() {
             >
               ROHIT SHRESTHA
             </Heading>
-            <Button
-              id="downloadCV"
-              target="_blank"
-              label="Download CV"
-              href="cv/Rohit_Shrestha_CV.pdf"
-              variant="secondary"
-              arrowIcon
-            />
           </Column>
 
           {/* ABOUT ME SECTION */}
@@ -385,68 +380,9 @@ export default function Home() {
             <Text align="center" onBackground="neutral-weak">
               Frontend Developer specializing in modern web technologies
             </Text>
-
-            <Row
-              marginY="32"
-              background="overlay"
-              fillWidth
-              radius="xl"
-              border="neutral-alpha-weak"
-              overflow="hidden"
-              mobileDirection="column"
-            >
-              <Row fill hide="m">
-                <SmartImage
-                  src="/images/my-image.png"
-                  alt="Rohit Shrestha"
-                  sizes="560px"
-                  quality={100}
-                  objectFit="cover"
-                />
-              </Row>
-              <Column fillWidth gap="20" padding="32" position="relative">
-                <Heading as="h3" variant="display-default-s">
-                  Hello, I'm Rohit
-                </Heading>
-                <Text marginBottom="16">
-                  I'm a Frontend Developer from Kathmandu, Nepal, specializing
-                  in Next.js, React, and geospatial web technologies with
-                  experience creating innovative applications for trip planning,
-                  AI-assisted interviews, and HR management.
-                </Text>
-                <Text marginBottom="16">
-                  Currently completing my Bachelor's degree in Computer Science
-                  (expected 2025), I have professional experience as a Frontend
-                  Developer Intern at Going Genius Group, where I specialized in
-                  integrating geospatial technologies like Cesium and Leaflet
-                  into web applications.
-                </Text>
-                <Text marginBottom="16">
-                  My technical skills include TypeScript, Next.js, React.js,
-                  TailwindCSS, GSAP, JavaScript, Three.js, DrizzleORM, tRPC, and
-                  various UI component libraries like Shadcn and AceternityUI.
-                  I'm passionate about creating intuitive and visually appealing
-                  user interfaces that deliver exceptional user experiences.
-                </Text>
-
-                <Row gap="16" horizontal="start" marginTop="16">
-                  <Button
-                    href="https://github.com/haleatus"
-                    prefixIcon="github"
-                    label="GitHub"
-                    variant="tertiary"
-                    target="_blank"
-                  />
-                  <Button
-                    href="https://www.linkedin.com/in/ro-sth/"
-                    prefixIcon="linkedin"
-                    label="LinkedIn"
-                    variant="tertiary"
-                    target="_blank"
-                  />
-                </Row>
-              </Column>
-            </Row>
+            <AboutMeSection />
+            <EducationSection />
+            <ExperienceSection />
           </Column>
 
           {/* SKILLS SECTION */}

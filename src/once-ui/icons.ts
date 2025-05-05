@@ -44,6 +44,7 @@ import {
 
 import { LuChevronsLeftRight } from "react-icons/lu";
 import { FaMailchimp } from "react-icons/fa";
+import { PiReadCvLogo } from "react-icons/pi";
 
 export const iconLibrary: Record<string, IconType> = {
   chevronUp: HiChevronUp,
@@ -68,6 +69,7 @@ export const iconLibrary: Record<string, IconType> = {
   discord: FaDiscord,
   google: FaGoogle,
   github: FaGithub,
+  resume: PiReadCvLogo,
   linkedin: FaLinkedin,
   mail: FaMailchimp,
   phone: FaPhone,
