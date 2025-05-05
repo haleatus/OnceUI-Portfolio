@@ -4,43 +4,24 @@ import type React from "react";
 import { useState } from "react";
 
 import {
-  Avatar,
   Background,
   Button,
-  Card,
   Column,
-  CompareImage,
-  DateRangePicker,
-  Dialog,
   Fade,
-  Feedback,
   Heading,
-  HoloFx,
   Icon,
   IconButton,
   InlineCode,
-  Input,
-  Line,
   Logo,
-  PasswordInput,
   Row,
-  SegmentedControl,
-  Select,
   SmartImage,
-  SmartLink,
-  StatusIndicator,
   StyleOverlay,
-  Switch,
-  TagInput,
   Text,
-  Textarea,
   ThemeSwitcher,
-  TiltFx,
   useToast,
   type DateRange,
 } from "@/once-ui/components";
 import { ScrollToTop } from "@/once-ui/components/ScrollToTop";
-import { CodeBlock, MediaUpload } from "@/once-ui/modules";
 
 export default function Home() {
   const [selectedValue, setSelectedValue] = useState("");
@@ -774,7 +755,7 @@ export default function Home() {
           as="footer"
           fillWidth
           paddingX="l"
-          paddingTop="64"
+          paddingTop="40"
           paddingBottom="40"
         >
           <Background
@@ -804,57 +785,6 @@ export default function Home() {
           </Column>
         </Row>
       </Column>
-
-      <Dialog
-        isOpen={isFirstDialogOpen}
-        onClose={() => setIsFirstDialogOpen(false)}
-        title="Account details"
-        description="Manage your security settings and password."
-        base={isSecondDialogOpen}
-        onHeightChange={(height) => setFirstDialogHeight(height)}
-        footer={
-          <Button
-            variant="secondary"
-            onClick={() => setIsFirstDialogOpen(false)}
-          >
-            Close
-          </Button>
-        }
-      >
-        <Column paddingTop="24" fillWidth gap="24">
-          <Switch
-            reverse
-            isChecked={twoFA}
-            onToggle={() => setTwoFA(!twoFA)}
-            label="2FA"
-            description="Enable two factor authentication"
-          />
-          <Button onClick={() => setIsSecondDialogOpen(true)}>
-            Change password
-          </Button>
-        </Column>
-      </Dialog>
-      <Dialog
-        isOpen={isSecondDialogOpen}
-        onClose={() => setIsSecondDialogOpen(false)}
-        title="Change password"
-        stack
-        description="Choose a new password for your account."
-        minHeight={firstDialogHeight}
-        footer={
-          <>
-            <Button
-              variant="secondary"
-              onClick={() => setIsSecondDialogOpen(false)}
-            >
-              Close
-            </Button>
-            <Button onClick={() => setIsSecondDialogOpen(false)}>Save</Button>
-          </>
-        }
-      >
-        <PasswordInput id="resetPassword" label="New password" />
-      </Dialog>
     </Column>
   );
 }
