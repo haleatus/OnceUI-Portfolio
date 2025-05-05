@@ -352,7 +352,7 @@ export default function Home() {
               <Text>Frontend Developer from Nepal</Text>
             </InlineCode>
             <Heading
-              wrap="balance"
+              wrap="stable"
               variant="display-strong-xl"
               align="center"
               marginBottom="16"
@@ -379,10 +379,10 @@ export default function Home() {
             position="relative"
             paddingY="64"
           >
-            <Heading as="h2" variant="display-default-m">
+            <Heading as="h1" weight="strong">
               About Me
             </Heading>
-            <Text marginBottom="32" align="center" onBackground="neutral-weak">
+            <Text align="center" onBackground="neutral-weak">
               Frontend Developer specializing in modern web technologies
             </Text>
 
@@ -431,14 +431,14 @@ export default function Home() {
 
                 <Row gap="16" horizontal="start" marginTop="16">
                   <Button
-                    href="https://github.com/RohitSth"
+                    href="https://github.com/haleatus"
                     prefixIcon="github"
                     label="GitHub"
                     variant="tertiary"
                     target="_blank"
                   />
                   <Button
-                    href="https://www.linkedin.com/in/rohit-shrestha/"
+                    href="https://www.linkedin.com/in/ro-sth/"
                     prefixIcon="linkedin"
                     label="LinkedIn"
                     variant="tertiary"
