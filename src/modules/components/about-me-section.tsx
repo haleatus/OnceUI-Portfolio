@@ -48,7 +48,7 @@ export const AboutMeSection = () => {
 
         <Row gap="16" horizontal="start" marginTop="16">
           <Button
-            href="https://github.com/RohitSth"
+            href="https://github.com/haleatus"
             prefixIcon="github"
             label="GitHub"
             variant="tertiary"
