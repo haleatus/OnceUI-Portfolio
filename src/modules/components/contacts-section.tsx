@@ -187,59 +187,6 @@ export const ContactSection = () => {
             />
           </Row>
         </Column>
-
-        {/* Contact Form */}
-        <Column
-          fillWidth
-          as="form"
-          onSubmit={handleSubmit}
-          gap="16"
-          padding="32"
-          position="relative"
-        >
-          <Heading as="h3" variant="display-default-s" marginBottom="16">
-            Send a Message
-          </Heading>
-
-          <Input
-            id="name"
-            label="Your Name"
-            placeholder="John Doe"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-
-          <Input
-            id="email"
-            label="Your Email"
-            placeholder="john@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            required
-          />
-
-          <Textarea
-            id="message"
-            label="Your Message"
-            placeholder="I'd like to discuss a project opportunity..."
-            value={message}
-            onChange={(e: { target: { value: SetStateAction<string> } }) =>
-              setMessage(e.target.value)
-            }
-            rows={5}
-            required
-          />
-
-          <Button
-            type="submit"
-            label={isSubmitting ? "Sending..." : "Send Message"}
-            variant="primary"
-            disabled={isSubmitting}
-            prefixIcon={isSubmitting ? "loader" : "send"}
-          />
-        </Column>
       </Row>
     </Column>
   );
