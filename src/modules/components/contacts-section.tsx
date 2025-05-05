@@ -85,7 +85,7 @@ export const ContactSection = () => {
       paddingY="64"
       marginTop="32"
     >
-      <Heading as="h2" variant="display-default-m">
+      <Heading as="h1" weight="strong">
         Get In Touch
       </Heading>
       <Text marginBottom="32" align="center" onBackground="neutral-weak">
@@ -93,7 +93,6 @@ export const ContactSection = () => {
       </Text>
 
       <Row
-        marginY="32"
         background="overlay"
         fillWidth
         maxWidth="l"
