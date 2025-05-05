@@ -22,6 +22,8 @@ import {
   type DateRange,
 } from "@/once-ui/components";
 import { ScrollToTop } from "@/once-ui/components/ScrollToTop";
+import { SkillsSection } from "@/modules/components/skills-section";
+import { ContactSection } from "@/modules/components/contacts-section";
 
 export default function Home() {
   const [selectedValue, setSelectedValue] = useState("");
@@ -146,7 +148,7 @@ export default function Home() {
         "Integrated Gemini and VapiAI for voice-based dynamic Q&A sessions",
         "Developed performance scoring and improvement suggestion system",
       ],
-      image: "/images/project2.jpg",
+      image: "/images/AI-Agent.png",
     },
     {
       title: "Xploverse Mobile App",
@@ -159,7 +161,7 @@ export default function Home() {
         "Implemented Firebase Authentication, Cloud Firestore, and Firebase Storage",
         "Created navigation-to-event feature with real-time directions",
       ],
-      image: "/images/project3.jpg",
+      image: "/images/xploverse/landing-flutter.png",
     },
     {
       title: "HRPortal",
@@ -172,7 +174,7 @@ export default function Home() {
         "Managed state with Zustand and TanStack Query for efficient data fetching",
         "Integrated Axios for handling API communications",
       ],
-      image: "/images/project4.jpg",
+      image: "/images/hr-portal/HR-Portal-light.png",
     },
   ];
 
@@ -469,68 +471,7 @@ export default function Home() {
           </Column>
 
           {/* SKILLS SECTION */}
-          <Column
-            id="skills"
-            fillWidth
-            paddingX="32"
-            gap="12"
-            horizontal="center"
-            position="relative"
-            paddingY="64"
-            marginTop="32"
-          >
-            <Background
-              mask={{
-                x: 0,
-                y: 100,
-              }}
-              position="absolute"
-              grid={{
-                display: true,
-                width: "0.25rem",
-                color: "accent-alpha-strong",
-                height: "0.25rem",
-              }}
-            />
-            <Heading as="h2" variant="display-default-m">
-              Skills & Expertise
-            </Heading>
-            <Text marginBottom="32" align="center" onBackground="neutral-weak">
-              A comprehensive toolkit of technologies I work with
-            </Text>
-
-            <Column gap="24" fillWidth>
-              {skills.map((skillGroup, index) => (
-                <Column
-                  key={index}
-                  background="overlay"
-                  fillWidth
-                  radius="xl"
-                  border="neutral-alpha-weak"
-                  padding="24"
-                  gap="12"
-                >
-                  <Heading as="h3" variant="display-default-xs">
-                    {skillGroup.category}
-                  </Heading>
-                  <Row gap="8" wrap fillWidth>
-                    {skillGroup.items.map((skill, skillIndex) => (
-                      <InlineCode
-                        key={skillIndex}
-                        radius="m"
-                        fit
-                        paddingX="12"
-                        paddingY="8"
-                        margin="4"
-                      >
-                        <Text variant="body-default-s">{skill}</Text>
-                      </InlineCode>
-                    ))}
-                  </Row>
-                </Column>
-              ))}
-            </Column>
-          </Column>
+          <SkillsSection />
 
           {/* PROJECTS SECTION */}
           <Column
@@ -641,113 +582,7 @@ export default function Home() {
         </Column>
 
         {/* CONTACT SECTION */}
-        <Column
-          id="contact"
-          fillWidth
-          paddingX="32"
-          gap="12"
-          horizontal="center"
-          position="relative"
-          paddingY="64"
-          marginTop="32"
-        >
-          <Background
-            mask={{
-              x: 100,
-              y: 0,
-              radius: 75,
-            }}
-            position="absolute"
-            gradient={{
-              display: true,
-              tilt: -35,
-              height: 50,
-              width: 75,
-              x: 100,
-              y: 40,
-              colorStart: "accent-solid-medium",
-              colorEnd: "static-transparent",
-            }}
-          />
-          <Heading as="h2" variant="display-default-m">
-            Get In Touch
-          </Heading>
-          <Text marginBottom="32" align="center" onBackground="neutral-weak">
-            Feel free to reach out for opportunities or just to say hello
-          </Text>
-
-          <Row
-            marginY="32"
-            background="overlay"
-            fillWidth
-            maxWidth="l"
-            radius="xl"
-            border="neutral-alpha-weak"
-            overflow="hidden"
-          >
-            <Column
-              fillWidth
-              gap="20"
-              padding="32"
-              position="relative"
-              horizontal="center"
-            >
-              <Row
-                gap="12"
-                vertical="center"
-                marginBottom="16"
-                wrap={true}
-                horizontal="center"
-              >
-                <Icon name="mail" size="m" onBackground="brand-medium" />
-                <Text variant="body-strong-m">shrestha.rohit655@gmail.com</Text>
-              </Row>
-              <Row
-                gap="12"
-                vertical="center"
-                marginBottom="16"
-                wrap={true}
-                horizontal="center"
-              >
-                <Icon name="phone" size="m" onBackground="brand-medium" />
-                <Text variant="body-strong-m">+977 9840883711</Text>
-              </Row>
-              <Row
-                gap="12"
-                vertical="center"
-                marginBottom="24"
-                wrap={true}
-                horizontal="center"
-              >
-                <Icon name="mapPin" size="m" onBackground="brand-medium" />
-                <Text variant="body-strong-m">Kathmandu, Nepal</Text>
-              </Row>
-
-              <Row gap="16" horizontal="center" marginTop="16">
-                <IconButton
-                  href="https://github.com/haleatus"
-                  icon="github"
-                  variant="secondary"
-                  target="_blank"
-                  tooltip="GitHub"
-                />
-                <IconButton
-                  href="https://www.linkedin.com/in/ro-sth/"
-                  icon="linkedin"
-                  variant="secondary"
-                  target="_blank"
-                  tooltip="LinkedIn"
-                />
-                <IconButton
-                  href="mailto:shrestha.rohit655@gmail.com"
-                  icon="mail"
-                  variant="secondary"
-                  tooltip="Email"
-                />
-              </Row>
-            </Column>
-          </Row>
-        </Column>
+        <ContactSection />
 
         {/* FOOTER */}
         <Row
