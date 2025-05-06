@@ -37,6 +37,7 @@ import { RiLayout3Fill, RiVisaLine } from "react-icons/ri";
 import {
   FaDiscord,
   FaGithub,
+  FaGlobe,
   FaGoogle,
   FaLinkedin,
   FaMapLocation,
@@ -92,6 +93,7 @@ export const iconLibrary: Record<string, IconType> = {
   layout: RiLayout3Fill,
   skills: MdQueryStats,
   instagram: AiFillInstagram,
+  globe: FaGlobe,
 };
 
 export type IconLibrary = typeof iconLibrary;

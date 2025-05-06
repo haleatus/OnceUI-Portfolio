@@ -1,15 +1,70 @@
 "use client";
 
+import type React from "react";
+
 import {
+  Button,
   Column,
   Heading,
   Icon,
   IconButton,
+  Input,
   Row,
   Text,
+  Textarea,
+  useToast,
 } from "@/once-ui/components";
+import emailjs from "emailjs-com";
+import { useRef, useState } from "react";
 
 export const ContactSection = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const { addToast } = useToast();
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Prevent multiple submissions
+    if (isSubmitting || formSubmitted) return;
+
+    setIsSubmitting(true);
+
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID!,
+        formRef.current!,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      )
+      .then(
+        (result) => {
+          console.log("Email sent!", result.text);
+          addToast({
+            message: "Message sent successfully!",
+            variant: "success",
+          });
+          setFormSubmitted(true);
+
+          // Reset form
+          if (formRef.current) {
+            formRef.current.reset();
+          }
+        },
+        (error) => {
+          console.log("Error:", error.text);
+          addToast({
+            message: "Failed to send message. Please try again.",
+            variant: "danger",
+          });
+        }
+      )
+      .finally(() => {
+        setIsSubmitting(false);
+      });
+  };
+
   return (
     <Column
       id="contact"
@@ -38,39 +93,36 @@ export const ContactSection = () => {
         mobileDirection="column"
       >
         {/* Contact Information */}
-        <Column fill gap="20" padding="32" position="relative" align="center">
+        <Column
+          fill
+          gap="20"
+          padding="32"
+          position="relative"
+          align="center"
+          background="brand-alpha-weak"
+        >
           <Heading as="h3" variant="display-default-s" marginBottom="16">
             Contact Information
           </Heading>
 
-          <Row gap="12" vertical="center" horizontal="center" marginBottom="16">
+          <Row gap="12" vertical="center" marginBottom="16">
             <Column background="brand-alpha-weak" padding="12" radius="full">
               <Icon name="mail" size="m" onBackground="brand-strong" />
             </Column>
             <Column>
-              <Text variant="body-default-xs" onBackground="neutral-medium">
-                Email
-              </Text>
               <Text variant="body-strong-s">
-                <a
-                  href="mailto:shrestha.rohit655@gmail.com?subject=Contact&body=Hi Rohit,"
-                  target="_self"
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
+                <p style={{ textDecoration: "none", color: "inherit" }}>
                   shrestha.rohit655@gmail.com
-                </a>
+                </p>
               </Text>
             </Column>
           </Row>
 
-          <Row gap="12" vertical="center" horizontal="center" marginBottom="16">
+          <Row gap="12" vertical="center" marginBottom="16">
             <Column background="brand-alpha-weak" padding="12" radius="full">
               <Icon name="phone" size="s" onBackground="brand-strong" />
             </Column>
             <Column>
-              <Text variant="body-default-xs" onBackground="neutral-medium">
-                Phone
-              </Text>
               <Text variant="body-strong-s">
                 <a
                   href="tel:+9779840883711"
@@ -82,15 +134,12 @@ export const ContactSection = () => {
             </Column>
           </Row>
 
-          <Row gap="12" vertical="center" horizontal="center" marginBottom="24">
+          <Row gap="12" vertical="center" marginBottom="24">
             <Column background="brand-alpha-weak" padding="12" radius="full">
               <Icon name="mapPin" size="m" onBackground="brand-strong" />
             </Column>
             <Column>
-              <Text variant="body-default-xs" onBackground="neutral-medium">
-                Location
-              </Text>
-              <Text variant="body-strong-s">Kathmandu, Nepal</Text>
+              <Text variant="body-strong-s">Chandragiri, Kathmandu, Nepal</Text>
             </Column>
           </Row>
 
@@ -117,6 +166,69 @@ export const ContactSection = () => {
               tooltip="Instagram"
             />
           </Row>
+        </Column>
+
+        {/* Contact Form */}
+        <Column fill padding="32" gap="20">
+          <Heading as="h3" variant="display-default-s" marginBottom="16">
+            Send a Message
+          </Heading>
+
+          <form ref={formRef} onSubmit={sendEmail}>
+            <Column gap="16" fillWidth>
+              <Input
+                id="name"
+                name="user_name"
+                required
+                label="Name"
+                disabled={isSubmitting || formSubmitted}
+              />
+
+              <Input
+                id="email"
+                type="email"
+                name="user_email"
+                required
+                label="Email"
+                disabled={isSubmitting || formSubmitted}
+              />
+
+              <input
+                type="hidden"
+                name="to_email"
+                value="shrestha.rohit655@gmail.com"
+              />
+
+              <Textarea
+                id="message"
+                name="message"
+                required
+                label="Message"
+                rows={5}
+                disabled={isSubmitting || formSubmitted}
+              />
+
+              <Button
+                type="submit"
+                variant="tertiary"
+                loading={isSubmitting}
+                disabled={isSubmitting || formSubmitted}
+                fillWidth
+              >
+                {formSubmitted ? "Message Sent" : "Send Message"}
+              </Button>
+
+              {formSubmitted && (
+                <Text
+                  variant="body-default-s"
+                  onBackground="success-strong"
+                  align="center"
+                >
+                  Your message has been sent successfully!
+                </Text>
+              )}
+            </Column>
+          </form>
         </Column>
       </Row>
     </Column>
