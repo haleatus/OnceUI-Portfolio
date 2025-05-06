@@ -143,33 +143,35 @@ const categories = Array.from(
   new Set(allSkills.map((skill) => skill.category))
 );
 
-// Skill logo component with hover effect
+// Skill logo component with hover effect - FIXED to avoid nested buttons
 const SkillLogo: FC<{ skill: Skill }> = ({ skill }) => {
   const [showTooltip, setShowTooltip] = useState(false);
+
+  const handleClick = () => {
+    window.open(skill.url, "_blank", "noopener noreferrer");
+  };
 
   return (
     <div style={{ position: "relative", display: "inline-block" }}>
       <motion.div
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
-        onClick={() => window.open(skill.url, "_blank", "noopener noreferrer")}
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
         style={{ cursor: "pointer" }}
-        className="rounded-2xl"
+        className="rounded-2xl group"
       >
-        <Card
-          noHoverBackground
+        <div
+          onClick={handleClick}
           style={{
-            width: "75px", // Increased from 60px
-            height: "75px", // Increased from 60px
+            width: "55px",
+            height: "55px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            background: "rgba(255, 255, 255, 0.03)",
-            backdropFilter: "blur(5px)",
-            border: "1px solid rgba(255, 255, 255, 0.05)",
-            borderRadius: "20px",
+            background: "rgba(255, 255, 255, 0)",
+            border: "0px solid rgba(255, 255, 255, 0)",
+            borderRadius: "10px",
             padding: "0",
             transition: "all 0.3s ease",
           }}
@@ -177,11 +179,11 @@ const SkillLogo: FC<{ skill: Skill }> = ({ skill }) => {
           <Image
             src={skill.icon || "/placeholder.svg"}
             alt={skill.name}
-            width={40} // Increased from 30
-            height={40} // Increased from 30
+            width={40}
+            height={40}
             style={{ opacity: 0.9 }}
           />
-        </Card>
+        </div>
       </motion.div>
 
       {/* Tooltip positioned absolutely relative to its parent */}
@@ -224,7 +226,7 @@ const SkillLogo: FC<{ skill: Skill }> = ({ skill }) => {
   );
 };
 
-// Category section component
+// Category section component - FIXED to center logos
 const SkillCategory: FC<{ category: string }> = ({ category }) => {
   const categorySkills = allSkills.filter(
     (skill) => skill.category === category
@@ -235,30 +237,32 @@ const SkillCategory: FC<{ category: string }> = ({ category }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+      }}
     >
-      <Column gap="4" fillWidth align="center">
-        <Card
-          background="overlay" // Changed from brand-strong
-          radius="l"
-          border="neutral-alpha-weak"
-          padding="16"
-          style={{
-            backdropFilter: "blur(10px)",
-          }}
-        >
-          <Row gap="8" wrap horizontal="start" fillWidth>
-            {categorySkills.map((skill) => (
-              <SkillLogo key={skill.name} skill={skill} />
-            ))}
-          </Row>
-        </Card>
-      </Column>
+      <Row gap="8" horizontal="center" fillWidth>
+        {categorySkills.map((skill) => (
+          <Card
+            key={skill.name}
+            background="overlay"
+            border="neutral-alpha-weak"
+            radius="s"
+            noHoverBackground
+          >
+            <SkillLogo skill={skill} />
+          </Card>
+        ))}
+      </Row>
     </motion.div>
   );
 };
 
 export const SkillsSection: FC = () => {
-  const [activeFilter, setActiveFilter] = useState<string | null>("Frontend");
+  const [activeFilter, setActiveFilter] = useState<string>("Frontend");
 
   const filteredCategories = activeFilter
     ? categories.filter((cat) => cat === activeFilter)
@@ -300,7 +304,9 @@ export const SkillsSection: FC = () => {
               weight="default"
               variant="secondary"
               onClick={() =>
-                setActiveFilter(category === activeFilter ? null : category)
+                setActiveFilter(
+                  category === activeFilter ? activeFilter : category
+                )
               }
             />
           ))}
