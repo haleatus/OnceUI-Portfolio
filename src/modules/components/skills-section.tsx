@@ -1,49 +1,62 @@
 "use client";
 
-import { useState, type FC } from "react";
-import { Card, Column, Heading, Row } from "@/once-ui/components";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  Column,
+  Heading,
+  Row,
+  Text,
+  SmartImage,
+  InlineCode,
+  Background,
+} from "@/once-ui/components";
+import { useState } from "react";
 
-// Define the skill type
+// Define the skill type with category
 interface Skill {
   name: string;
   icon: string;
   url: string;
+  category: string;
 }
 
-// -- Skills Data --
+// Skills data organized by category
 const allSkills: Skill[] = [
   // Frontend Development
   {
     name: "TypeScript",
     icon: "/images/logos/typescript.svg",
     url: "https://www.typescriptlang.org/docs/",
+    category: "Frontend",
   },
   {
     name: "Next.js",
-    icon: "/images/logos/nextjs.svg",
+    icon: "/images/logos/next.svg",
     url: "https://nextjs.org/docs",
+    category: "Frontend",
   },
   {
     name: "React.js",
-    icon: "/images/logos/react.svg",
+    icon: "/images/logos/reactjs.svg",
     url: "https://react.dev/",
+    category: "Frontend",
   },
   {
     name: "TailwindCSS",
-    icon: "/images/logos/tailwind.svg",
+    icon: "/images/logos/tailwindcss.svg",
     url: "https://tailwindcss.com/docs",
+    category: "Frontend",
   },
   {
     name: "JavaScript",
     icon: "/images/logos/javascript.svg",
     url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    category: "Frontend",
   },
   {
     name: "Three.js",
     icon: "/images/logos/threejs.svg",
     url: "https://threejs.org/docs/",
+    category: "Frontend",
   },
 
   // UI/UX & Design
@@ -51,190 +64,218 @@ const allSkills: Skill[] = [
     name: "Figma",
     icon: "/images/logos/figma.svg",
     url: "https://help.figma.com/",
+    category: "UI/UX & Design",
   },
   {
     name: "Shadcn",
     icon: "/images/logos/shadcn.svg",
     url: "https://ui.shadcn.com/",
+    category: "UI/UX & Design",
   },
   {
     name: "Framer Motion",
     icon: "/images/logos/framer.svg",
     url: "https://www.framer.com/motion/introduction/",
+    category: "UI/UX & Design",
   },
   {
     name: "MaterialUI",
     icon: "/images/logos/mui.svg",
     url: "https://mui.com/material-ui/getting-started/",
+    category: "UI/UX & Design",
   },
   {
     name: "GSAP",
     icon: "/images/logos/gsap.svg",
     url: "https://greensock.com/docs/",
+    category: "UI/UX & Design",
   },
 
   // Backend & Database
   {
     name: "DrizzleORM",
-    icon: "/images/logos/drizzle.svg",
+    icon: "/images/logos/drizzleorm.svg",
     url: "https://orm.drizzle.team/docs/overview",
+    category: "Backend & Database",
   },
-  { name: "tRPC", icon: "/images/logos/trpc.svg", url: "https://trpc.io/docs" },
+  {
+    name: "tRPC",
+    icon: "/images/logos/trpc.svg",
+    url: "https://trpc.io/docs",
+    category: "Backend & Database",
+  },
   {
     name: "Prisma",
     icon: "/images/logos/prisma.svg",
     url: "https://www.prisma.io/docs",
+    category: "Backend & Database",
   },
   {
     name: "Tanstack Query",
     icon: "/images/logos/tanstack.svg",
     url: "https://tanstack.com/query/latest/docs/react/overview",
+    category: "Backend & Database",
   },
 
   // Mapping & Geospatial
   {
     name: "Mapbox",
     icon: "/images/logos/mapbox.svg",
-    url: "https://docs.mapbox.com/",
+    url: "https://www.mapbox.com/",
+    category: "Mapping & Geospatial",
   },
   {
     name: "Leaflet",
     icon: "/images/logos/leaflet.svg",
     url: "https://leafletjs.com/reference.html",
+    category: "Mapping & Geospatial",
   },
   {
     name: "Cesium",
     icon: "/images/logos/cesium.svg",
     url: "https://cesium.com/learn/cesiumjs-learn/",
+    category: "Mapping & Geospatial",
   },
   {
     name: "GeoJSON",
-    icon: "/images/logos/geojson.svg",
+    icon: "/images/logos/geo.svg",
     url: "https://geojson.org/",
+    category: "Mapping & Geospatial",
   },
 ];
 
-// Skill logo component with hover effect
-const SkillLogo: FC<{ skill: Skill }> = ({ skill }) => {
-  const [showTooltip, setShowTooltip] = useState(false);
+export function SkillsSection() {
+  // Get unique categories
+  const categories = [...new Set(allSkills.map((skill) => skill.category))];
+  const [activeCategory, setActiveCategory] = useState<string>(categories[0]);
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
-  return (
-    <div style={{ position: "relative", display: "inline-block" }}>
-      <motion.div
-        whileHover={{ scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 400, damping: 17 }}
-        onClick={() => window.open(skill.url, "_blank", "noopener noreferrer")}
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
-        style={{ cursor: "pointer" }}
-        className="rounded-2xl"
-      >
-        <Card
-          noHoverBackground
-          style={{
-            width: "60px",
-            height: "60px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            background: "rgba(255, 255, 255, 0.03)",
-            backdropFilter: "blur(5px)",
-            border: "1px solid rgba(255, 255, 255, 0.05)",
-            borderRadius: "20px",
-            padding: "0",
-            transition: "all 0.3s ease",
-          }}
-        >
-          <Image
-            src={skill.icon || "/placeholder.svg"}
-            alt={skill.name}
-            width={30}
-            height={30}
-            style={{ opacity: 0.9 }}
-          />
-        </Card>
-      </motion.div>
-
-      {/* Tooltip positioned absolutely relative to its parent */}
-      <AnimatePresence>
-        {showTooltip && (
-          <motion.div
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            style={{
-              position: "absolute",
-              bottom: "100%", // Position above the icon
-              left: "50%",
-              transform: "translateX(-50%)",
-              marginBottom: "8px", // Space between tooltip and icon
-              zIndex: 1000,
-              whiteSpace: "nowrap",
-              pointerEvents: "none", // Prevents tooltip from interfering with hover
-            }}
-          >
-            <div
-              style={{
-                background: "rgba(0, 0, 0, 0.75)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
-                borderRadius: "4px",
-                padding: "4px 8px",
-                color: "white",
-                fontSize: "12px",
-                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
-              }}
-            >
-              {skill.name}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+  // Filter skills by active category
+  const filteredSkills = allSkills.filter(
+    (skill) => skill.category === activeCategory
   );
-};
 
-export const SkillsSection: FC = () => {
+  // Handle skill click
+  const handleSkillClick = (url: string) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <Column
       id="skills"
       fillWidth
       paddingX="24"
-      paddingY="24"
-      gap="8"
+      gap="16"
       horizontal="center"
       position="relative"
+      paddingY="40"
     >
-      {/* Section Heading */}
-      <Heading as="h2" variant="display-default-s">
-        Skills & Expertise
+      <Heading as="h2" variant="display-default-s" align="center">
+        Skills
       </Heading>
 
-      {/* Skills Grid */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+      {/* Category Tabs */}
+      <Row gap="8" horizontal="center" wrap paddingX="8">
+        {categories.map((category) => (
+          <InlineCode
+            key={category}
+            radius="l"
+            fit
+            paddingX="12"
+            paddingY="4"
+            onClick={() => setActiveCategory(category)}
+            style={{
+              cursor: "pointer",
+              background:
+                activeCategory === category
+                  ? "var(--color-brand-solid-weak)"
+                  : "var(--color-neutral-alpha-weak)",
+            }}
+          >
+            <Text
+              variant="body-default-xs"
+              onBackground={
+                activeCategory === category ? "brand-strong" : "neutral-medium"
+              }
+            >
+              {category}
+            </Text>
+          </InlineCode>
+        ))}
+      </Row>
+
+      {/* Skills Grid - More compact */}
+      <Row
+        gap="12"
+        wrap
+        horizontal="center"
+        paddingX="12"
+        paddingY="16"
+        background="overlay"
+        radius="l"
+        border="neutral-alpha-weak"
       >
-        <Column
-          background="overlay"
-          radius="l"
-          border="neutral-alpha-weak"
-          padding="24"
-          maxWidth={900}
-          style={{
-            backdropFilter: "blur(10px)",
-            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
-          }}
-        >
-          <Row gap="8" wrap fillWidth horizontal="center">
-            {allSkills.map((skill) => (
-              <SkillLogo key={skill.name} skill={skill} />
-            ))}
-          </Row>
-        </Column>
-      </motion.div>
+        {filteredSkills.map((skill) => (
+          <Column
+            key={skill.name}
+            gap="4"
+            horizontal="center"
+            vertical="center"
+            width={14}
+            height={14}
+            padding="8"
+            radius="m"
+            border={
+              hoveredSkill === skill.name
+                ? "brand-alpha-strong"
+                : "neutral-alpha-weak"
+            }
+            onClick={() => handleSkillClick(skill.url)}
+            onMouseEnter={() => setHoveredSkill(skill.name)}
+            onMouseLeave={() => setHoveredSkill(null)}
+            style={{
+              cursor: "pointer",
+              textDecoration: "none",
+              transition: "all 0.2s ease-in-out",
+              transform:
+                hoveredSkill === skill.name ? "translateY(-3px)" : "none",
+            }}
+          >
+            <Background
+              position="absolute"
+              radius="m"
+              gradient={{
+                display: true,
+                opacity: 20,
+                tilt: 135,
+                height: 90,
+                width: 90,
+                x: 0,
+                y: 0,
+                colorStart: "brand-solid-weak",
+                colorEnd: "accent-solid-weak",
+              }}
+            />
+            <SmartImage
+              src={skill.icon}
+              alt={skill.name}
+              width={8}
+              height={8}
+              unoptimized={true}
+              objectFit="contain"
+              // style={{ position: "relative", zIndex: 1 }}
+            />
+            <Text
+              align="center"
+              variant="body-default-xs"
+              marginTop="8"
+              style={{ position: "relative", zIndex: 1 }}
+            >
+              {skill.name}
+            </Text>
+          </Column>
+        ))}
+      </Row>
     </Column>
   );
-};
+}

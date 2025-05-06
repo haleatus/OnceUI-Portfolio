@@ -1,37 +1,38 @@
 import { IconType } from "react-icons";
 
 import {
-  HiChevronUp,
-  HiChevronDown,
-  HiChevronRight,
-  HiChevronLeft,
-  HiOutlineArrowPath,
+  HiArrowUpRight,
+  HiCalendar,
   HiCheck,
-  HiOutlineSun,
-  HiOutlineMoon,
-  HiMiniQuestionMarkCircle,
+  HiCheckCircle,
+  HiChevronDown,
+  HiChevronLeft,
+  HiChevronRight,
+  HiChevronUp,
+  HiExclamationCircle,
+  HiExclamationTriangle,
+  HiEyeDropper,
+  HiInformationCircle,
   HiMiniMinus,
+  HiMiniPlus,
+  HiMiniQuestionMarkCircle,
+  HiMiniUser,
+  HiMiniUserCircle,
+  HiMiniXMark,
+  HiOutlineArrowPath,
+  HiOutlineClipboard,
+  HiOutlineComputerDesktop,
   HiOutlineEye,
   HiOutlineEyeSlash,
-  HiMiniPlus,
-  HiMiniUser,
-  HiMiniXMark,
-  HiEyeDropper,
-  HiOutlineClipboard,
-  HiOutlineMagnifyingGlass,
-  HiCalendar,
   HiOutlineLink,
-  HiExclamationTriangle,
-  HiArrowUpRight,
-  HiInformationCircle,
-  HiExclamationCircle,
-  HiCheckCircle,
+  HiOutlineMagnifyingGlass,
+  HiOutlineMoon,
   HiOutlineShieldCheck,
   HiOutlineSparkles,
-  HiOutlineComputerDesktop,
+  HiOutlineSun,
 } from "react-icons/hi2";
 
-import { RiVisaLine } from "react-icons/ri";
+import { RiLayout3Fill, RiVisaLine } from "react-icons/ri";
 
 import {
   FaDiscord,
@@ -42,9 +43,11 @@ import {
   FaPhone,
 } from "react-icons/fa6";
 
+import { IoMail } from "react-icons/io5";
 import { LuChevronsLeftRight } from "react-icons/lu";
-import { FaMailchimp } from "react-icons/fa";
 import { PiReadCvLogo } from "react-icons/pi";
+import { MdQueryStats } from "react-icons/md";
+import { AiFillInstagram } from "react-icons/ai";
 
 export const iconLibrary: Record<string, IconType> = {
   chevronUp: HiChevronUp,
@@ -71,7 +74,7 @@ export const iconLibrary: Record<string, IconType> = {
   github: FaGithub,
   resume: PiReadCvLogo,
   linkedin: FaLinkedin,
-  mail: FaMailchimp,
+  mail: IoMail,
   phone: FaPhone,
   mapPin: FaMapLocation,
   arrowUpRight: HiArrowUpRight,
@@ -85,6 +88,10 @@ export const iconLibrary: Record<string, IconType> = {
   security: HiOutlineShieldCheck,
   sparkle: HiOutlineSparkles,
   computer: HiOutlineComputerDesktop,
+  user: HiMiniUserCircle,
+  layout: RiLayout3Fill,
+  skills: MdQueryStats,
+  instagram: AiFillInstagram,
 };
 
 export type IconLibrary = typeof iconLibrary;

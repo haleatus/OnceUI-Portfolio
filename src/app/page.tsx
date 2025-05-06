@@ -38,6 +38,9 @@ export default function Home() {
         "Implemented review and rating system for trip feedback",
       ],
       image: "/images/xploverse/landing-page.png",
+      backend_live_url: "https://xploverse-nest.onrender.com/",
+      live_url: "https://xploverse-webapp.vercel.app/",
+      source_code_url: "https://github.com/haleatus/xploverse_webapp",
     },
     {
       title: "AI Interview Agent/Helper",
@@ -51,6 +54,8 @@ export default function Home() {
         "Developed performance scoring and improvement suggestion system",
       ],
       image: "/images/AI-Agent.png",
+      live_url: "https://real-time-ai-voice-agent-khaki.vercel.app/",
+      source_code_url: "https://github.com/haleatus/real-time-ai-voice-agent",
     },
     {
       title: "Xploverse Mobile App",
@@ -64,6 +69,7 @@ export default function Home() {
         "Created navigation-to-event feature with real-time directions",
       ],
       image: "/images/xploverse/landing-flutter.png",
+      source_code_url: "https://github.com/haleatus/xploverse_flutter",
     },
     {
       title: "HRPortal",
@@ -77,6 +83,8 @@ export default function Home() {
         "Integrated Axios for handling API communications",
       ],
       image: "/images/hr-portal/HR-Portal-light.png",
+      live_url: "https://hr-portal-teal.vercel.app/",
+      source_code_url: "https://github.com/haleatus/hr-portal",
     },
   ];
 
@@ -115,11 +123,18 @@ export default function Home() {
             href="https://once-ui-portfolio-sigma.vercel.app/"
           />
 
-          <Row gap="12" hide="s">
+          <Row gap="12" hide="l">
             <Button
               href="#about"
               size="s"
               label="About"
+              weight="default"
+              variant="tertiary"
+            />
+            <Button
+              href="#skills"
+              size="s"
+              label="Skills"
               weight="default"
               variant="tertiary"
             />
@@ -147,12 +162,18 @@ export default function Home() {
               />
             </Row>
           </Row>
-          <Row gap="16" show="s" horizontal="center" paddingRight="24">
+          <Row gap="16" show="l" horizontal="center" paddingRight="24">
             <IconButton
               href="#about"
               icon="user"
               variant="tertiary"
               tooltip="About"
+            />
+            <IconButton
+              href="#skills"
+              icon="skills"
+              variant="tertiary"
+              tooltip="Skills"
             />
             <IconButton
               href="#projects"
@@ -249,12 +270,14 @@ export default function Home() {
           <Column
             fillWidth
             horizontal="center"
+            vertical="center"
             gap="32"
             padding="32"
             position="relative"
+            height="s"
           >
             <InlineCode radius="xl" shadow="m" fit paddingX="16" paddingY="8">
-              <Text>Frontend Developer from Nepal</Text>
+              <Text>Frontend Developer</Text>
             </InlineCode>
             <Heading
               wrap="stable"
@@ -276,7 +299,7 @@ export default function Home() {
             position="relative"
             paddingY="64"
           >
-            <Heading as="h1" weight="strong">
+            <Heading as="h2" variant="display-default-s" align="center">
               About Me
             </Heading>
             <Text align="center" onBackground="neutral-weak">
@@ -301,7 +324,7 @@ export default function Home() {
             paddingY="64"
             marginTop="32"
           >
-            <Heading as="h2" variant="display-default-m">
+            <Heading as="h2" variant="display-default-s">
               My Projects
             </Heading>
             <Text marginBottom="32" align="center" onBackground="neutral-weak">
@@ -361,20 +384,32 @@ export default function Home() {
                       ))}
                     </Column>
                     <Row gap="12">
-                      <Button
-                        label="Live Demo"
-                        variant="secondary"
-                        prefixIcon="globe"
-                        size="s"
-                        href="#"
-                        target="_blank"
-                      />
+                      {project.backend_live_url && (
+                        <Button
+                          label="Backend Live"
+                          variant="secondary"
+                          prefixIcon="globe"
+                          size="s"
+                          href={project.backend_live_url}
+                          target="_blank"
+                        />
+                      )}
+                      {project.live_url && (
+                        <Button
+                          label="Live"
+                          variant="secondary"
+                          prefixIcon="globe"
+                          size="s"
+                          href={project.live_url}
+                          target="_blank"
+                        />
+                      )}
                       <Button
                         label="Source Code"
                         variant="tertiary"
                         prefixIcon="github"
                         size="s"
-                        href="#"
+                        href={project.source_code_url}
                         target="_blank"
                       />
                     </Row>
