@@ -105,34 +105,24 @@ export const ContactSection = () => {
             Contact Information
           </Heading>
 
-          <Row gap="12" vertical="center" horizontal="center" marginBottom="16">
+          <Row gap="12" vertical="center" marginBottom="16">
             <Column background="brand-alpha-weak" padding="12" radius="full">
               <Icon name="mail" size="m" onBackground="brand-strong" />
             </Column>
             <Column>
-              <Text variant="body-default-xs" onBackground="neutral-medium">
-                Email
-              </Text>
               <Text variant="body-strong-s">
-                <a
-                  href="mailto:shrestha.rohit655@gmail.com?subject=Contact&body=Hi Rohit,"
-                  target="_self"
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
+                <p style={{ textDecoration: "none", color: "inherit" }}>
                   shrestha.rohit655@gmail.com
-                </a>
+                </p>
               </Text>
             </Column>
           </Row>
 
-          <Row gap="12" vertical="center" horizontal="center" marginBottom="16">
+          <Row gap="12" vertical="center" marginBottom="16">
             <Column background="brand-alpha-weak" padding="12" radius="full">
               <Icon name="phone" size="s" onBackground="brand-strong" />
             </Column>
             <Column>
-              <Text variant="body-default-xs" onBackground="neutral-medium">
-                Phone
-              </Text>
               <Text variant="body-strong-s">
                 <a
                   href="tel:+9779840883711"
@@ -144,15 +134,12 @@ export const ContactSection = () => {
             </Column>
           </Row>
 
-          <Row gap="12" vertical="center" horizontal="center" marginBottom="24">
+          <Row gap="12" vertical="center" marginBottom="24">
             <Column background="brand-alpha-weak" padding="12" radius="full">
               <Icon name="mapPin" size="m" onBackground="brand-strong" />
             </Column>
             <Column>
-              <Text variant="body-default-xs" onBackground="neutral-medium">
-                Location
-              </Text>
-              <Text variant="body-strong-s">Kathmandu, Nepal</Text>
+              <Text variant="body-strong-s">Chandragiri, Kathmandu, Nepal</Text>
             </Column>
           </Row>
 
@@ -192,7 +179,6 @@ export const ContactSection = () => {
               <Input
                 id="name"
                 name="user_name"
-                placeholder="Your Name"
                 required
                 label="Name"
                 disabled={isSubmitting || formSubmitted}
@@ -202,7 +188,6 @@ export const ContactSection = () => {
                 id="email"
                 type="email"
                 name="user_email"
-                placeholder="Your Email"
                 required
                 label="Email"
                 disabled={isSubmitting || formSubmitted}
@@ -217,7 +202,6 @@ export const ContactSection = () => {
               <Textarea
                 id="message"
                 name="message"
-                placeholder="Your Message"
                 required
                 label="Message"
                 rows={5}
@@ -226,7 +210,7 @@ export const ContactSection = () => {
 
               <Button
                 type="submit"
-                variant="primary"
+                variant="tertiary"
                 loading={isSubmitting}
                 disabled={isSubmitting || formSubmitted}
                 fillWidth
