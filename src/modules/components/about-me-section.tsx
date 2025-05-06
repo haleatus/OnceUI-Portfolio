@@ -31,7 +31,7 @@ export const AboutMeSection = () => {
       </Row>
       <Column fillWidth gap="20" padding="32" position="relative">
         <Heading as="h4" variant="display-default-xs">
-          Hello, I'm Rohit
+          Hello, I'm Rohit Shrestha
         </Heading>
         <Text>
           I'm a Frontend Developer from Kathmandu, Nepal, specializing in

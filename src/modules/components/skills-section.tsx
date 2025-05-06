@@ -208,7 +208,7 @@ export const SkillsSection: FC = () => {
     >
       {/* Section Heading */}
       <Heading as="h2" variant="display-default-s">
-        Skills & Expertise
+        Skills
       </Heading>
 
       {/* Skills Grid */}

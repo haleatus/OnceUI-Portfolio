@@ -249,12 +249,14 @@ export default function Home() {
           <Column
             fillWidth
             horizontal="center"
+            vertical="center"
             gap="32"
             padding="32"
             position="relative"
+            height="s"
           >
             <InlineCode radius="xl" shadow="m" fit paddingX="16" paddingY="8">
-              <Text>Frontend Developer from Nepal</Text>
+              <Text>Frontend Developer</Text>
             </InlineCode>
             <Heading
               wrap="stable"
@@ -276,7 +278,7 @@ export default function Home() {
             position="relative"
             paddingY="64"
           >
-            <Heading as="h1" weight="strong">
+            <Heading as="h2" variant="display-default-s" align="center">
               About Me
             </Heading>
             <Text align="center" onBackground="neutral-weak">
@@ -301,7 +303,7 @@ export default function Home() {
             paddingY="64"
             marginTop="32"
           >
-            <Heading as="h2" variant="display-default-m">
+            <Heading as="h2" variant="display-default-s">
               My Projects
             </Heading>
             <Text marginBottom="32" align="center" onBackground="neutral-weak">

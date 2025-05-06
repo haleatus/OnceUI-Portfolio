@@ -5,7 +5,7 @@ import { Card, Column, Heading, Row, Text } from "@/once-ui/components";
 export const ExperienceSection = () => {
   return (
     <Column fillWidth marginTop="64" gap="8">
-      <Heading as="h2" weight="strong" align="center">
+      <Heading as="h2" variant="display-default-s" align="center">
         Experience
       </Heading>
 
