@@ -314,7 +314,7 @@ export const SkillsSection: FC = () => {
       </motion.div>
 
       {/* Skills Categories */}
-      <Column gap="16" maxWidth={900} fillWidth>
+      <Column gap="4" maxWidth={900} fillWidth>
         {filteredCategories.map((category) => (
           <SkillCategory key={category} category={category} />
         ))}

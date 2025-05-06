@@ -102,18 +102,12 @@ export const ContactSection = () => {
         mobileDirection="column"
       >
         {/* Contact Information */}
-        <Column
-          fill
-          gap="20"
-          padding="32"
-          position="relative"
-          background="brand-alpha-weak"
-        >
+        <Column fill gap="20" padding="32" position="relative" align="center">
           <Heading as="h3" variant="display-default-s" marginBottom="16">
             Contact Information
           </Heading>
 
-          <Row gap="12" vertical="center" marginBottom="16">
+          <Row gap="12" vertical="center" horizontal="center" marginBottom="16">
             <Column background="brand-alpha-medium" padding="12" radius="full">
               <Icon name="mail" size="m" onBackground="brand-strong" />
             </Column>
@@ -132,7 +126,7 @@ export const ContactSection = () => {
             </Column>
           </Row>
 
-          <Row gap="12" vertical="center" marginBottom="16">
+          <Row gap="12" vertical="center" horizontal="center" marginBottom="16">
             <Column background="brand-alpha-medium" padding="12" radius="full">
               <Icon name="phone" size="m" onBackground="brand-strong" />
             </Column>
@@ -151,7 +145,7 @@ export const ContactSection = () => {
             </Column>
           </Row>
 
-          <Row gap="12" vertical="center" marginBottom="24">
+          <Row gap="12" vertical="center" horizontal="center" marginBottom="24">
             <Column background="brand-alpha-medium" padding="12" radius="full">
               <Icon name="mapPin" size="m" onBackground="brand-strong" />
             </Column>
@@ -163,26 +157,20 @@ export const ContactSection = () => {
             </Column>
           </Row>
 
-          <Row gap="16" horizontal="start">
+          <Row gap="4" vertical="center" horizontal="end">
             <IconButton
-              href="https://github.com/RohitSth"
+              href="https://github.com/haleatus"
               icon="github"
-              variant="secondary"
+              variant="ghost"
               target="_blank"
               tooltip="GitHub"
             />
             <IconButton
-              href="https://www.linkedin.com/in/rohit-shrestha/"
+              href="https://www.linkedin.com/in/ro-sth/"
               icon="linkedin"
-              variant="secondary"
+              variant="ghost"
               target="_blank"
               tooltip="LinkedIn"
-            />
-            <IconButton
-              href="mailto:shrestha.rohit655@gmail.com"
-              icon="mail"
-              variant="secondary"
-              tooltip="Email"
             />
           </Row>
         </Column>
