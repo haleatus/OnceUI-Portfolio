@@ -46,6 +46,7 @@ import {
 import { IoMail } from "react-icons/io5";
 import { LuChevronsLeftRight } from "react-icons/lu";
 import { PiReadCvLogo } from "react-icons/pi";
+import { MdQueryStats } from "react-icons/md";
 
 export const iconLibrary: Record<string, IconType> = {
   chevronUp: HiChevronUp,
@@ -88,6 +89,7 @@ export const iconLibrary: Record<string, IconType> = {
   computer: HiOutlineComputerDesktop,
   user: HiMiniUserCircle,
   layout: RiLayout3Fill,
+  skills: MdQueryStats,
 };
 
 export type IconLibrary = typeof iconLibrary;

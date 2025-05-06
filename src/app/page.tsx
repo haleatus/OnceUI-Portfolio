@@ -132,6 +132,13 @@ export default function Home() {
               variant="tertiary"
             />
             <Button
+              href="#skills"
+              size="s"
+              label="Skills"
+              weight="default"
+              variant="tertiary"
+            />
+            <Button
               href="#projects"
               size="s"
               label="Projects"
@@ -161,6 +168,12 @@ export default function Home() {
               icon="user"
               variant="tertiary"
               tooltip="About"
+            />
+            <IconButton
+              href="#skills"
+              icon="skills"
+              variant="tertiary"
+              tooltip="Skills"
             />
             <IconButton
               href="#projects"
