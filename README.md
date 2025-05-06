@@ -3,7 +3,7 @@
 A sleek, modern, and responsive portfolio website showcasing my professional journey, projects, and skills. Built with [Next.js](https://nextjs.org/) and styled using the elegant [OnceUI Design System](https://onceui.dev/).
 
 <div align="center">
-  <img src="/preview.png" alt="Portfolio Preview" />
+  <img src="public\preview.png" alt="Portfolio Preview" />
 </div>
 
 ## ✨ Key Features
