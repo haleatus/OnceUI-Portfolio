@@ -23,12 +23,6 @@ interface Skill {
 const allSkills: Skill[] = [
   // Frontend Development
   {
-    name: "TypeScript",
-    icon: "/images/logos/typescript.svg",
-    url: "https://www.typescriptlang.org/docs/",
-    category: "Frontend",
-  },
-  {
     name: "Next.js",
     icon: "/images/logos/next.svg",
     url: "https://nextjs.org/docs",
@@ -44,6 +38,12 @@ const allSkills: Skill[] = [
     name: "TailwindCSS",
     icon: "/images/logos/tailwindcss.svg",
     url: "https://tailwindcss.com/docs",
+    category: "Frontend",
+  },
+  {
+    name: "TypeScript",
+    icon: "/images/logos/typescript.svg",
+    url: "https://www.typescriptlang.org/docs/",
     category: "Frontend",
   },
   {
